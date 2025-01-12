@@ -11,10 +11,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+
+        profile: "#F1F5F9",
         sidebar: "#161A23",
         divider: "#2D2F39",
         sidebar_li: "#8B8D91",
-        sidebar_item_active: "#2D2F39"
+        sidebar_item_active: "#2D2F39",
+        header_button: "#C5412B"
       },
       width: {
         sidebar:'273px',
@@ -22,6 +25,7 @@ export default {
       },
       height: {
         divider: "2.13px",
+        header: "93px"
       },
       padding: {
         sidebar: "25.59px",
@@ -34,10 +38,12 @@ export default {
       },
       fontSize: {
         sidebar_li: "14.93px",
-        sidebar_menu: "10.66px"
+        sidebar_menu: "10.66px",
+        header: "14.25px"
       },
       fontWeight: {
         medium: "500",
+        header: "600"
       }
     },
   },
