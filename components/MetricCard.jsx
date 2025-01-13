@@ -1,69 +1,108 @@
 "use client";
 import { useEffect, useRef } from "react";
-import * as echarts from "echarts";
+import EChartsReact from "echarts-for-react";
+import Image from "next/image";
 
-const MetricCard = ({ title, value, change, chartData, chartType }) => {
+const MetricCard = ({
+  title,
+  value,
+  change,
+  chartData,
+  chartType,
+  iconcolor,
+  iconSrc,
+  textcolor,
+  linecolor,
+  gradientcolor,
+  backgroundcolor,
+}) => {
   const chartRef = useRef(null);
 
-  useEffect(() => {
-    const chart = echarts.init(chartRef.current);
-
-    const option = {
-      grid: {
-        top: "15%",
-        left: "3%",
-        right: "4%",
-        bottom: "3%",
-        containLabel: true,
-      },
-      xAxis: {
-        type: "category",
-        boundaryGap: false,
-        show: false,
-        data: chartData.map((d) => d.date),
-      },
-      yAxis: {
-        type: "value",
-        show: false,
-      },
-      series: [
-        {
-          data: chartData.map((d) => d.value),
-          type: chartType || "line",
-          smooth: true,
-          areaStyle: {
-            opacity: 0.2,
-          },
-          itemStyle: {
-            color: change >= 0 ? "#4CAF50" : "#f44336",
-          },
+  const option = {
+    grid: {
+      top: "15%",
+      right: "4%",
+      left: "3%",
+      bottom: "3%",
+      containLabel: true,
+    },
+    xAxis: {
+      type: "category",
+      boundaryGap: false,
+      show: false,
+      data: chartData.map((d) => d.date),
+    },
+    yAxis: {
+      type: "value",
+      show: false,
+    },
+    series: [
+      {
+        data: chartData.map((d) => d.value),
+        type: chartType || "line",
+        smooth: true,
+        areaStyle: {
+          opacity: 0.2,
         },
-      ],
-      tooltip: {
-        trigger: "axis",
+        // itemStyle: {
+        //   color: change >= 0 ? linecolor : gradientcolor,
+        // },
+        itemStyle: {
+          color: linecolor,
+        },
       },
-    };
-
-    chart.setOption(option);
-
-    return () => chart.dispose();
-  }, [chartData, chartType, change]);
+    ],
+    tooltip: {
+      trigger: "axis",
+    },
+  };
 
   return (
-    <div className="bg-white rounded-lg p-4 shadow">
-      <div className="flex justify-between mb-4">
-        <div className="text-gray-600">{title}</div>
+    <div
+      className={`${backgroundcolor} rounded-lg border border-light_gray_medium_2 p-[6.99px] shadow w-[188px] h-[114px]`}
+    >
+      <div className="flex flex-row space-x-2">
         <div
-          className={`text-sm ${
-            change >= 0 ? "text-green-500" : "text-red-500"
-          }`}
+          className={`rounded-full w-6 h-6 ${iconcolor} flex items-center justify-center`}
         >
-          {change > 0 ? "+" : ""}
-          {change}%
+          <Image src={iconSrc} alt="spend" width={12} height={12} />
+        </div>
+        <div className="flex flex-col space-y-1">
+          <div
+            className={`${textcolor || "text-black"} text-[15.64px] font-bold`}
+          >
+            {title}
+          </div>
+          <div className="flex flex-row items-center pr-3">
+            <div className={`${textcolor || "text-black"} text-sm  mr-7`}>
+              {value}
+            </div>
+            <div
+              className={`text-xs ${
+                change >= 0
+                  ? textcolor || "text-green-500"
+                  : textcolor || "text-red-500"
+              }`}
+            >
+              {change > 0 ? "+" : ""}
+              {change}%
+            </div>
+            <Image
+              src={`/images/metricscard/${
+                change >= 0 ? (textcolor ? "upW" : "up") : "down"
+              }.png`}
+              alt="arrow"
+              width={11.47}
+              height={11.47}
+            />
+          </div>
         </div>
       </div>
-      <div className="text-2xl font-bold mb-4">{value}</div>
-      <div ref={chartRef} style={{ height: "100px" }} />
+      <EChartsReact
+        ref={chartRef}
+        option={option}
+        style={{ height: "68px", width: "100%" }}
+      />
     </div>
   );
 };
