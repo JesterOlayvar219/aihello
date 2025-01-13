@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Sidebar() {
   return (
-    <div className="flex flex-col bg-sidebar w-sidebar text-white h-screen p-sidebar relative">
+    <div className="flex flex-col bg-sidebar w-sidebar text-white h-screen p-sidebar sticky top-0 left-0 max-xl:hidden">
       <div className="logo mb-sidebar">
         <Image
           src="/images/sidebar/maskgroup.png"
