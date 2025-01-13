@@ -3,12 +3,19 @@ import Image from "next/image";
 export default function Header() {
   return (
     <div className="h-header flex items-center justify-end bg-white px-6 border-b">
-      <div className="flex items-center space-x-4 mr-[26px]">
+      <Image
+        src="/images/header/logo_b.png"
+        alt="Logo"
+        width={152.41}
+        height={42.09}
+        className="xl:hidden"
+      />
+      <div className="flex items-center space-x-4 mr-[26px] max-[1087px]:hidden ">
         <button className="text-header_button border border-header_button px-header_help_btn_x py-header_help_btn_y rounded-lg text-header_help_btn">
           Get Specialist Help
         </button>
-        <div className="flex items-center space-x-2 bg-profile border border-header_filter_border rounded-lg px-header_help_btn_x py-header_help_btn_y justify-between">
-          <div className="flex items-center mr-3">
+        <div className="flex items-center space-x-3 bg-profile border border-header_filter_border rounded-lg px-[11px] py-header_help_btn_y justify-between">
+          <div className="flex items-center space-x-2">
             <Image
               src="/images/header/us-flag.png"
               alt="US"
@@ -35,7 +42,6 @@ export default function Header() {
           />
         </div>
       </div>
-
       <div className="flex items-center space-x-[18.09px] mr-[32.92px]">
         <div className="flex border border-header_filter_border rounded-full w-[41px] h-[41px] relative justify-center items-center">
           <Image
