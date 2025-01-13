@@ -19,3 +19,9 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* styles.css or a similar CSS file */
+.ag-theme-alpine .ag-header, 
+.ag-theme-alpine .ag-row {
+  border-color: #EAECF0 !important;
+}
