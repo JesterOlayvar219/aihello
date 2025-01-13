@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import EChartsReact from "echarts-for-react";
+import ReactECharts from "echarts-for-react";
 import Image from "next/image";
 
 const MetricCard = ({
@@ -98,11 +99,14 @@ const MetricCard = ({
           </div>
         </div>
       </div>
-      <EChartsReact
-        ref={chartRef}
-        option={option}
-        style={{ height: "68px", width: "100%" }}
-      />
+      <div className="relative">
+        <ReactECharts
+          ref={chartRef}
+          option={option}
+          style={{ height: "68px", width: "228px" }}
+          className="absolute -left-[45px]"
+        />
+      </div>
     </div>
   );
 };
