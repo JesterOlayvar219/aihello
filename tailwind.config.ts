@@ -32,6 +32,7 @@ export default {
         light_gray_medium: "#667085",
         light_gray_medium_2: "#EAECF0",
         light_gray_medium_3: "#DFE5F9",
+        light_gray_medium_4: "#7F7F7F",
         light_green_medium_2: "#07BEAA",
         light_green_medium_3: "#58C4FF",
         light_green_medium_4: "#005AFF",
